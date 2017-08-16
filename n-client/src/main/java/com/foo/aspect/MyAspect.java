@@ -47,12 +47,13 @@ public class MyAspect {
      * @param joinPoint
      */
     @Around("execution(* com.foo.service.AspectService.aspectTest(..))")
-    public void before(ProceedingJoinPoint joinPoint) throws Throwable {
+    public String around(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
         MyAction myAction = method.getAnnotation(MyAction.class);
         Object data = joinPoint.proceed(); //ProceedingJoinPoint：用于环绕通知，使用proceed()方法来执行目标方法：
         System.out.println("方法式拦截：" + myAction.name() + "return value:" + data.toString());
+        return "你好111111";
     }
 
 

@@ -54,7 +54,8 @@ public class ClientPageController{
     @Autowired
     AspectService aspectService;
     @RequestMapping("aop")
-    public void aopTest(){
-        aspectService.aspectTest("参数是是是");
+    @ResponseBody
+    public String aopTest(){
+        return aspectService.aspectTest("参数是是是");
     }
 }
