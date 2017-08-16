@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.foo.api.LodopApi;
+import com.foo.service.AspectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,5 +49,12 @@ public class ClientPageController{
         model.addAttribute("data", map);
         String sss = (String) map.get("str");
         return "lodop";
+    }
+
+    @Autowired
+    AspectService aspectService;
+    @RequestMapping("aop")
+    public void aopTest(){
+        aspectService.aspectTest("参数是是是");
     }
 }
